@@ -1,0 +1,29 @@
+
+<script src="{{ asset('assets') }}/js/tms-0.4.1.js"></script>
+<script src="{{ asset('assets') }}/js/jquery-ui-1.10.3.custom.min.js"></script>
+<script src="{{ asset('assets') }}/js/jquery.ui.totop.js"></script>
+<script>
+    $(window).load(function () {
+        $('.slider')._TMS({
+            show: 0,
+            pauseOnHover: false,
+            prevBu: '.prev',
+            nextBu: '.next',
+            playBu: false,
+            duration: 800,
+            preset: 'random',
+            pagination: false, //'.pagination',true,'<ul></ul>'
+            pagNums: false,
+            slideshow: 8000,
+            numStatus: false,
+            banners: true,
+            waitBannerAnimation: false,
+            progressBar: false
+        });
+        $("#tabs").tabs();
+        $().UItoTop({
+            easingType: 'easeOutQuart'
+        });
+    });
+</script>
+<script src="{{ asset('assets') }}/js/html5shiv.js"></script>

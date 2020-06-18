@@ -1,0 +1,115 @@
+{% extends 'adminbase.html.twig' %}
+
+{% block title %}Travel{% endblock %}
+
+{% block body %}
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1>Blank Page</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Blank Page</li>
+                        </ol>
+                    </div>
+                </div>
+            </div><!-- /.container-fluid -->
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <!-- Default box -->
+            <div class="card">
+
+                <div class="card-body">
+
+                    <h1>Travel</h1>
+
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ travel.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Title</th>
+                            <td>{{ travel.title }}</td>
+                        </tr>
+                        <tr>
+                            <th>Keywords</th>
+                            <td>{{ travel.keywords }}</td>
+                        </tr>
+                        <tr>
+                            <th>Description</th>
+                            <td>{{ travel.description }}</td>
+                        </tr>
+                        <tr>
+                            <th>Image</th>
+                            <td><img src="{{ asset('upload/images/' ~ travel.image) }}" height="100"> </td>
+                        </tr>
+                        <tr>
+                            <th>Star</th>
+                            <td>{{ travel.star }}</td>
+                        </tr>
+                        <tr>
+                            <th>Address</th>
+                            <td>{{ travel.address }}</td>
+                        </tr>
+                        <tr>
+                            <th>Phone</th>
+                            <td>{{ travel.phone }}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>{{ travel.email }}</td>
+                        </tr>
+                        <tr>
+                            <th>City</th>
+                            <td>{{ travel.city }}</td>
+                        </tr>
+                        <tr>
+                            <th>Country</th>
+                            <td>{{ travel.country }}</td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>{{ travel.status }}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="col-md-2">
+                        <a href="{{ path('admin_travel_index') }}" class="btn btn-block btn-info">Back to List</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{{ path('admin_travel_edit', {'id': travel.id}) }}" class="btn btn-block btn-success" >Edit</a>
+                    </div>
+                    <div class="col-md-2">
+                    {{ include('admin/travel/_delete_form.html.twig') }}
+                    </div>
+
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer">
+                    Footer
+                </div>
+                <!-- /.card-footer-->
+            </div>
+            <!-- /.card -->
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!-- /.content-wrapper -->
+
+
+
+{% endblock %}

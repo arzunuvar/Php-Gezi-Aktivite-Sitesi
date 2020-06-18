@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block head %}{% include('admin/head.html.twig') %}{% endblock %}
+    </head>
+    <body class="theme-red">
+
+        {% block header %}{% include('admin/header.html.twig') %}{% endblock %}
+        {% block sidebar %}{% include('admin/sidebar.html.twig') %}{% endblock %}
+        {% block body %}{% endblock %}
+        {% block footer %}{% include('admin/footer.html.twig') %}{% endblock %}
+    </body>
+</html>

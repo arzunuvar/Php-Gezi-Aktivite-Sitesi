@@ -1,0 +1,82 @@
+
+<!-- Favicon-->
+<link rel="icon" href="{{ asset('assets') }}/admin/favicon.ico" type="image/x-icon">
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+<!-- Bootstrap Core Css -->
+<link href="{{ asset('assets') }}/admin/plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+<!-- Waves Effect Css -->
+<link href="{{ asset('assets') }}/admin/plugins/node-waves/waves.css" rel="stylesheet" />
+
+<!-- Animation Css -->
+<link href="{{ asset('assets') }}/admin/plugins/animate-css/animate.css" rel="stylesheet" />
+
+<!-- Custom Css -->
+<link href="{{ asset('assets') }}/admin/css/style.css" rel="stylesheet">
+
+<!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
+<link href="{{ asset('assets') }}/admin/css/themes/all-themes.css" rel="stylesheet" />
+
+
+<div class="body">
+    <form name="image" action="{{ path('admin_image_new', {'id': id}) }}" method="post" enctype="multipart/form-data">
+        <label for="email_address">Title</label>
+        <div class="form-group">
+            <div class="form-line">
+                <input class="form-control" type="text" id="image_title" name="image[title]" maxlength="50">
+                <input type="hidden" id="image_travel" name="image[travel]" class="form-control" value="{{ id }}">
+            </div>
+        </div>
+
+        <label for="exampleInputFile">Gallery Image</label>
+        <div class="form-group">
+            <div class="form-line">
+                <input class="custom-file-input" type="file" name="image[image]" id="image_image">
+                <label class="custom-file-label" for="exampleInputFile">Choose File</label>
+
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary m-t-15 waves-effect">Submit</button>
+    </form>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Image</th>
+        <th>actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for image in images %}
+    <tr>
+        <td>{{ image.id }}</td>
+        <td>{{ image.title }}</td>
+        <td><img src="{{ asset('uploads/images/' ~ image.image) }}" height="60">
+        </td>
+
+        <td>
+
+            <form method="post" action="{{ path('admin_image_delete', {'id': image.id,'tid': id})}}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ image.id) }}">
+                <button class="btn btn-block btn-danger">Delete</button>
+            </form>
+
+
+        </td>
+    </tr>
+    {% else %}
+        <tr>
+            <td colspan="4">no records found</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>

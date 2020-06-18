@@ -1,0 +1,54 @@
+<div>
+    <div class="header">
+    </div>
+    <div class="body">
+        <form name="category" method="post">
+            <label for="email_address">Parent</label>
+            <div class="form-group">
+                <div class="form-line">
+                        <select id="category_parentid" name="category[parentid]"  class="form-control" >
+                            <option value="0"> Main Category </option>
+                            {% for cat in categories %}
+                                <option value="{{cat.id}}" {{ cat.id==category.parentid ? 'Selected':'' }}> {{ cat.title }}</option>
+                            {% endfor %}
+                        </select>
+
+                </div>
+            </div>
+            <label for="password">Category Name</label>
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="text" name="category[title]" id="category_title" value="{{ category.title }}" class="form-control" >
+                </div>
+            </div>
+            <label for="email_address">Description</label>
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="text" name="category[description]" id="category_description" value="{{ category.description }}" class="form-control" >
+                </div>
+            </div>
+            <label for="password">Category Keywords</label>
+            <div class="form-group">
+                <div class="form-line">
+                    <input type="text" name="category[keywords]" id="category_keywords" value="{{ category.keywords }}" class="form-control" >
+                </div>
+            </div>
+            <label for="email_address">Status</label>
+            <div class="form-group">
+                <div class="form-line">
+                    <select id="category_status" name="category[status]"  class="form-control" >
+                        <option> {{ category.status }} </option>
+                        <option> True </option>
+                        <option> False </option>
+                    </select>
+                </div>
+            </div>
+
+
+            <input type="checkbox" id="remember_me" class="filled-in">
+            <label for="remember_me">Remember Me</label>
+            <br>
+            <button type="submit" class="btn btn-primary m-t-15 waves-effect">Submit</button>
+        </form>
+    </div>
+</div>
